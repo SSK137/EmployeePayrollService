@@ -12,6 +12,7 @@ public class EmployeeData {
     }
 
     public String toString(){
-        return ("Employee Payroll Data] :- \n Id :"+id+"\n Name :"+name+"\n Salary : "+salary);
+        System.out.println("\n");
+        return "Employee Payroll Data]      Id :"+id+" Name :"+name+" Salary : "+salary;
     }
 }
