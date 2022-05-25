@@ -29,14 +29,14 @@ public class EmployeePayrollService {
     }
     public static void readFromFile() {
         try {
-            File file = new File("//home//hp//IdeaProjects//sampleforFileHandling//src//test.txt");
+            File file = new File("//home//hp//IdeaProjects//EmployeePayrollService/src/test.txt");
             BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
             String Data;
             int count=0;
             while ((Data= bufferedReader.readLine())!=null)
             {
                 count++;
-                System.out.println("\n Reading From File"+Data);
+                System.out.println(Data);
             }
             System.out.println(count);
         } catch (IOException ex) {
@@ -53,8 +53,13 @@ public class EmployeePayrollService {
         }
     }
     /*---Method To Write Data To the Console---*/
-    public void WriteEmployeePayrollData(){
+    public void WriteEmployeePayrollData(EnumIOService enumIOService){
+        if(enumIOService.equals(EnumIOService.File_IO))
+        {
+            EmployeePayrollService.readFromFile();
+        }else {
             System.out.println(EmployeeDataList);
+        }
     }
     public static void main(String[] args) {
         //Created ArrayList To Store Employee Data
@@ -63,7 +68,7 @@ public class EmployeePayrollService {
         EmployeePayrollService employeePayrollService=new EmployeePayrollService(employeeDataArrayList);
         //Function Calling
         employeePayrollService.ReadEmployeePayrollData(EnumIOService.Consol_IO);
-        employeePayrollService.WriteEmployeePayrollData();
+        employeePayrollService.WriteEmployeePayrollData(EnumIOService.File_IO);
         //employeePayrollService.ReadFile();
     }
 }
