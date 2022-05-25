@@ -1,5 +1,9 @@
 package com.bridgelabz;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,11 +24,22 @@ public class EmployeePayrollService {
         System.out.println("Enter Salary : ");
         double salary=scanner.nextDouble();
         EmployeeDataList.add(new EmployeeData(id,name,salary));
+        AddDataToFile(EmployeeDataList);
     }
+    /*---Method to Add Data to the File---*/
+    public void AddDataToFile(List<EmployeeData> employeeData){
+        File file = new File("//home//hp//IdeaProjects//sampleforFileHandling//src//test.txt");
+        try(BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(file,true))){
+            bufferedWriter.write(String.valueOf(employeeData));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /*---Method To Write Data To the Console---*/
-    public void WriteEmployeePayrollData(){
+/*    public void WriteEmployeePayrollData(){
         System.out.println(EmployeeDataList);
-    }
+    }*/
     public static void main(String[] args) {
         //Created ArrayList To Store Employee Data
         ArrayList<EmployeeData> employeeDataArrayList=new ArrayList<>();
@@ -32,6 +47,6 @@ public class EmployeePayrollService {
         EmployeePayrollService employeePayrollService=new EmployeePayrollService(employeeDataArrayList);
         //Function Calling
         employeePayrollService.ReadEmployeePayrollData(scanner);
-        employeePayrollService.WriteEmployeePayrollData();
+        //employeePayrollService.WriteEmployeePayrollData();
     }
 }
