@@ -13,7 +13,7 @@ public class EmployeePayrollService {
         this.EmployeeDataList=EmployeeDataList;
     }
     /*---Method To Read Employee Payroll Data---*/
-    public void ReadEmployeePayrollData(EnumIOService enumIOService){
+    public static void ReadEmployeePayrollData(EnumIOService enumIOService){
         if(enumIOService.equals(EnumIOService.File_IO)){
             EmployeePayrollService.readFromFile();
         }else {
@@ -27,22 +27,24 @@ public class EmployeePayrollService {
             AddDataToFile(EmployeeDataList);
         }
     }
-    public static void readFromFile() {
+    public static List<String> readFromFile() {
+        List<String> arrayList;
         try {
             File file = new File("//home//hp//IdeaProjects//EmployeePayrollService/src/test.txt");
-            BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            arrayList = new ArrayList<>();
             String Data;
-            int count=0;
-            while ((Data= bufferedReader.readLine())!=null)
-            {
+            int count = 0;
+            while ((Data = bufferedReader.readLine()) != null) {
                 count++;
                 System.out.println(Data);
+                arrayList.add(Data);
             }
             System.out.println(count);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-
+        return arrayList;
     }
     public static void AddDataToFile(List<EmployeeData> employeeData){
         File file = new File("//home//hp//IdeaProjects//EmployeePayrollService//src//test.txt");

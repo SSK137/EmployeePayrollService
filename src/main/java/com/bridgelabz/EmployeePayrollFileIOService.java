@@ -2,7 +2,7 @@ package com.bridgelabz;
 
 import java.io.File;
 import java.io.IOException;
-public class EmployeePayrollFileIOService {
+public class EmployeePayrollFileIOService{
     /*---Method To Create New File to particular Directory---*/
     public boolean CreateFile(){
         File file=new File("//home//hp//IdeaProjects//EmployeePayrollService//src//test.txt");
