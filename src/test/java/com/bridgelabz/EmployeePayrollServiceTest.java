@@ -25,4 +25,13 @@ public class EmployeePayrollServiceTest {
     public void DisplayFilesFromDirectory(){
         Assertions.assertTrue(employeePayrollFileIOService.ListOfAllFilesAndDirectory());
     }
+    @Test
+    public void GivenSqlQuery_RetriveAllDataFromTable_ShouldReturnTrue() {
+        JDBC_Operations jdbc_operations = new JDBC_Operations();
+        List<EmployeeData> employeeData = jdbc_operations.ReadAllDataFromTables();
+        for (EmployeeData employeeData1 : employeeData) {
+            System.out.println(employeeData1);
+        }
+        Assertions.assertEquals(7, employeeData.size());
+    }
 }
