@@ -39,4 +39,13 @@ public class EmployeePayrollServiceTest {
         JDBC_Operations jdbc_operations = new JDBC_Operations();
         Assertions.assertTrue(jdbc_operations.UpdateRecord());
     }
+    @Test
+    public void GivenSqlQuery_RecordUpdated_ShouldReturnTrue() throws SQLException {
+        String name="Tersia";
+        double salary=400000;
+        int result=  JDBC_Operations.UpdateQuery(salary,name);
+        System.out.println(result);
+        Assertions.assertEquals(2,result);
+    }
+
 }

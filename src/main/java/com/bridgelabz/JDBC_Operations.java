@@ -1,9 +1,6 @@
 package com.bridgelabz;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +39,13 @@ public class JDBC_Operations {
             e.printStackTrace();
             return false;
         }
+    }
+    //Update record using PreparedStatement
+    public static int UpdateQuery(double salary, String name) throws SQLException {
+        String sql = "update employee_payroll set salary = ? where name = ?";
+        PreparedStatement preparedStatement = DB_Connection.getConnection().prepareStatement(sql);
+        preparedStatement.setDouble(1,salary);
+        preparedStatement.setString(2,name);
+        return preparedStatement.executeUpdate();
     }
 }

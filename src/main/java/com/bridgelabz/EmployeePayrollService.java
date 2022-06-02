@@ -23,7 +23,9 @@ public class EmployeePayrollService {
             String name = scanner.next();
             System.out.println("Enter Salary : ");
             double salary = scanner.nextDouble();
-            EmployeeDataList.add(new EmployeeData(id, name, salary));
+            String Date=scanner.next();
+            String gender=scanner.next();
+            EmployeeDataList.add(new EmployeeData(id, name, salary,Date,gender));
             AddDataToFile(EmployeeDataList);
         }
     }
