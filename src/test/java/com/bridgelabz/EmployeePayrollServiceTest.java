@@ -34,4 +34,9 @@ public class EmployeePayrollServiceTest {
         }
         Assertions.assertEquals(7, employeeData.size());
     }
+    @Test
+    public void GivenSqlQuery_RecordUpdatedProper_ShouldReturnTrue() {
+        JDBC_Operations jdbc_operations = new JDBC_Operations();
+        Assertions.assertTrue(jdbc_operations.UpdateRecord());
+    }
 }
