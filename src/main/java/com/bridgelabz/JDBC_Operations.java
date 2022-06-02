@@ -64,7 +64,7 @@ public class JDBC_Operations {
         }
     }
     //Method to find count of records
-    public static boolean DisplayCount() {
+    public static boolean DisplaySum() {
         try(Connection conn = DB_Connection.getConnection();
             Statement statement = conn.createStatement();
         ) {

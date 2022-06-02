@@ -55,6 +55,6 @@ public class EmployeePayrollServiceTest {
     @Test
     public void GivenSqlQuery_ProperCount_ShouldReturnTrue() {
         JDBC_Operations jdbc_operations = new JDBC_Operations();
-        Assertions.assertTrue(jdbc_operations.DisplayCount());
+        Assertions.assertTrue(jdbc_operations.DisplaySum());
     }
 }
