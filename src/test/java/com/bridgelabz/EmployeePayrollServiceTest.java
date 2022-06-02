@@ -47,5 +47,9 @@ public class EmployeePayrollServiceTest {
         System.out.println(result);
         Assertions.assertEquals(2,result);
     }
-
+    @Test
+    public void GivenSqlQuery_ParticularRecordIsProper_ShouldReturnTrue(){
+        JDBC_Operations jdbc_operations=new JDBC_Operations();
+        Assertions.assertTrue(jdbc_operations.DisplayParticularData());
+    }
 }

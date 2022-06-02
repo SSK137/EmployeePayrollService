@@ -48,4 +48,19 @@ public class JDBC_Operations {
         preparedStatement.setString(2,name);
         return preparedStatement.executeUpdate();
     }
+    //Retrive data who have joined in a particular data range
+    public boolean DisplayParticularData(){
+        String sql="SELECT name FROM employee_payroll WHERE name = 'SSK' or  Start_Date BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW());";
+        try{
+            Connection connection=DB_Connection.getConnection();
+            Statement statement=connection.createStatement();
+            ResultSet resultSet=statement.executeQuery(sql);
+            while (resultSet.next()){
+                System.out.println(resultSet.getString("name"));
+            }
+            return true;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
