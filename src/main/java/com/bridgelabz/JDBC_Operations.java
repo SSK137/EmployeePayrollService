@@ -63,4 +63,20 @@ public class JDBC_Operations {
             throw new RuntimeException(e);
         }
     }
+    //Method to find count of records
+    public static boolean DisplayCount() {
+        try(Connection conn = DB_Connection.getConnection();
+            Statement statement = conn.createStatement();
+        ) {
+            String sql = "SELECT SUM(salary) FROM employee_payroll WHERE gender = 'F' GROUP BY gender;";
+            ResultSet resultSet =statement.executeQuery(sql);
+            while (resultSet.next()){
+                System.out.println(resultSet.getString("SUM(salary)"));
+            }
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
